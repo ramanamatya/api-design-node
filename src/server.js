@@ -2,6 +2,8 @@ import express from 'express';
 import { json, urlencoded } from 'body-parser';
 import morgan from 'morgan';
 import cors from 'cors';
+import { connect } from './database';
+import listingRouter from './sources/listing/listing.router';
 
 export const app = express();
 
@@ -12,21 +14,14 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
-app.get('/api', (req, res) => {
-  res.send(
-    [{
-      title: 'This is your API title',
-      description: 'Here is the required descriptions',
-    }]
-  );
-});
+app.use('/api/listing', listingRouter);
 
 const port = process.env.PORT || 8081;
 const start = async () => {
   try {
-    await
+    await connect();
     app.listen(port, () => {
-      console.log(`REST API on http://localhost:${port}/api`);
+      console.log(`API hosting on http://localhost:${port}/api`);
     });
   } catch (e) {
     console.error(e);
