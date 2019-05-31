@@ -15,5 +15,5 @@ A Simple Api design for Node.
 ```
 cd api-design-node
 yarn install
-npm dev
+yarn dev
 ```
