@@ -14,14 +14,14 @@ const App = () => {
 
   const fetchData = async () => {
     const result = await axios(
-      'http://localhost:8081/api/listing',
+      'api/listing',
     );
     setDescriptions(result.data.data);
   };
 
   const postData = async (description) => {
     // delete description['_id'];
-    const response = await axios.post('http://localhost:8081/api/listing', description);
+    const response = await axios.post('api/listing', description);
     setDescriptions([...descriptions, response.data.data]);
   };
 
@@ -35,13 +35,13 @@ const App = () => {
 
   const deleteDescription = (id) => {
     setEditing(false);
-    axios.delete(`http://localhost:8081/api/listing/${id}`);
+    axios.delete(`api/listing/${id}`);
     setDescriptions(descriptions.filter(description => description._id !== id));
   };
 
   const updateDescription = (id, updatedDescription) => {
     setEditing(false);
-    axios.put(`http://localhost:8081/api/listing/${id}`, updatedDescription);
+    axios.put(`api/listing/${id}`, updatedDescription);
     setDescriptions(descriptions.map(description => (description._id === id ? updatedDescription : description)));
   };
 
