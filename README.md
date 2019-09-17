@@ -11,9 +11,18 @@ A Simple Api design for Node.
 
 2. `cd api-design-node`
 
-3. Open api-design-node
+3. Run node: api-design-node
 ```
 cd api-design-node
 yarn install
 yarn dev
 ```
+api is serve in `http://localhost:8081/api/`
+
+4. Run clientside react
+```
+cd client
+yarn install
+yarn start
+```
+client side is serve in `http://localhost:3000/`
